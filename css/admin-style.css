@@ -1,0 +1,290 @@
+/**
+ * Admin Dashboard Stylesheet for Tutor LMS Coupon Tracker
+ *
+ * @package           TutorWCCouponTracker
+ * @author            Michael Ogolor
+ * @copyright         2026 Michael Ogolor / Fouchix Nexus LTD
+ * @license           GPL-2.0-or-later
+ * @version           4.0.0
+ *
+ * File Path: /css/admin-style.css
+ * Description: Modern Material Design dashboard styling for summary metrics, list table enhancements, responsive layout, and custom action buttons.
+ */
+
+/* ==========================================================================
+   1. Design Tokens & Theme Variables
+   ========================================================================== */
+:root {
+	/* Palette */
+	--tcm-primary: #2271b1;
+	--tcm-primary-hover: #135e96;
+	--tcm-surface: #ffffff;
+	--tcm-background: #f0f0f1;
+	--tcm-text-main: #1d2327;
+	--tcm-text-muted: #646970;
+	--tcm-border: #dcdcde;
+	--tcm-accent-teal: #008a20;
+	--tcm-accent-teal-bg: #e6f4ea;
+	--tcm-accent-purple: #722ed1;
+	--tcm-accent-purple-bg: #f9f0ff;
+
+	/* Elevation Shadows (Material Design Specs) */
+	--tcm-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+	--tcm-shadow-2: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+	/* Layout & Spacing */
+	--tcm-radius: 8px;
+	--tcm-radius-pill: 16px;
+	--tcm-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	--tcm-font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+/* ==========================================================================
+   2. Main Wrapper & Header Banner
+   ========================================================================== */
+.tcm-admin-wrap {
+	margin: 25px 20px 0 0;
+	max-width: 1400px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+/* Header Banner */
+.tcm-header-banner {
+	background: linear-gradient(135deg, #1d2327 0%, #2c3338 100%);
+	color: #ffffff;
+	padding: 28px 32px;
+	border-radius: var(--tcm-radius);
+	box-shadow: var(--tcm-shadow-2);
+	margin-bottom: 24px;
+	position: relative;
+	overflow: hidden;
+}
+
+.tcm-header-banner::after {
+	content: "";
+	position: absolute;
+	right: -30px;
+	top: -30px;
+	width: 180px;
+	height: 180px;
+	background: rgba(255, 255, 255, 0.03);
+	border-radius: 50%;
+	pointer-events: none;
+}
+
+.tcm-header-content h1 {
+	color: #ffffff;
+	font-size: 24px;
+	font-weight: 700;
+	margin: 0 0 6px 0;
+	line-height: 1.2;
+}
+
+.tcm-header-content p {
+	color: #a7aaad;
+	font-size: 14px;
+	margin: 0;
+}
+
+/* ==========================================================================
+   3. KPI Summary Metrics Grid
+   ========================================================================== */
+.tcm-stats-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 20px;
+	margin-bottom: 24px;
+}
+
+.tcm-stat-card {
+	background: var(--tcm-surface);
+	border: 1px solid var(--tcm-border);
+	border-radius: var(--tcm-radius);
+	padding: 20px 24px;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	box-shadow: var(--tcm-shadow-1);
+	transition: var(--tcm-transition);
+}
+
+.tcm-stat-card:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--tcm-shadow-2);
+}
+
+.tcm-stat-icon {
+	font-size: 28px;
+	width: 52px;
+	height: 52px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: var(--tcm-radius);
+	background: rgba(34, 113, 177, 0.08);
+	color: var(--tcm-primary);
+}
+
+.tcm-stat-data {
+	display: flex;
+	flex-direction: column;
+}
+
+.tcm-stat-value {
+	font-size: 22px;
+	font-weight: 700;
+	color: var(--tcm-text-main);
+	line-height: 1.2;
+}
+
+.tcm-stat-label {
+	font-size: 12px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	color: var(--tcm-text-muted);
+	margin-top: 4px;
+}
+
+/* ==========================================================================
+   4. Card Container & Export Bar
+   ========================================================================== */
+.tcm-card {
+	background: var(--tcm-surface);
+	border: 1px solid var(--tcm-border);
+	border-radius: var(--tcm-radius);
+	padding: 24px;
+	box-shadow: var(--tcm-shadow-1);
+}
+
+.tcm-card-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	padding-bottom: 16px;
+	border-bottom: 1px solid var(--tcm-border);
+}
+
+.tcm-card-header h2 {
+	font-size: 18px;
+	font-weight: 600;
+	margin: 0;
+	color: var(--tcm-text-main);
+}
+
+/* Export Form & Button */
+.tcm-export-form {
+	margin: 0;
+}
+
+.tcm-btn-export {
+	display: inline-flex !important;
+	align-items: center;
+	gap: 6px;
+	background: var(--tcm-primary) !important;
+	border-color: var(--tcm-primary) !important;
+	color: #ffffff !important;
+	font-weight: 600 !important;
+	padding: 4px 16px !important;
+	border-radius: 4px !important;
+	transition: var(--tcm-transition) !important;
+	box-shadow: none !important;
+}
+
+.tcm-btn-export:hover,
+.tcm-btn-export:focus {
+	background: var(--tcm-primary-hover) !important;
+	border-color: var(--tcm-primary-hover) !important;
+	transform: translateY(-1px);
+}
+
+.tcm-btn-export .dashicons {
+	font-size: 16px;
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+}
+
+/* ==========================================================================
+   5. WordPress List Table Enhancements
+   ========================================================================== */
+.tcm-card .wp-list-table {
+	border: 1px solid var(--tcm-border);
+	border-radius: var(--tcm-radius);
+	box-shadow: none;
+	overflow: hidden;
+}
+
+.tcm-card .wp-list-table thead th {
+	background: #f8f9fa;
+	font-weight: 600;
+	color: var(--tcm-text-main);
+	border-bottom: 2px solid var(--tcm-border);
+}
+
+.tcm-card .wp-list-table tbody tr:hover {
+	background: #f6f7f7;
+}
+
+/* Coupon Badge Pill */
+.tcm-badge-code {
+	display: inline-block;
+	background: var(--tcm-accent-teal-bg);
+	color: var(--tcm-accent-teal);
+	border: 1px solid rgba(0, 138, 32, 0.2);
+	font-family: var(--tcm-font-mono);
+	font-size: 12px;
+	font-weight: 700;
+	padding: 2px 10px;
+	border-radius: var(--tcm-radius-pill);
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+}
+
+/* Order Link Pill */
+.tcm-order-link {
+	display: inline-block;
+	font-weight: 600;
+	color: var(--tcm-primary);
+	background-color: #f0f6fc;
+	padding: 2px 8px;
+	border-radius: 4px;
+	text-decoration: none;
+	transition: var(--tcm-transition);
+}
+
+.tcm-order-link:hover {
+	background-color: #e2eef9;
+	color: var(--tcm-primary-hover);
+}
+
+/* Search Box Layout */
+.tcm-card .search-box {
+	margin-bottom: 16px;
+}
+
+.tcm-card .search-box input[type="search"] {
+	border-radius: 4px;
+	border: 1px solid var(--tcm-border);
+	padding: 4px 8px;
+}
+
+/* ==========================================================================
+   6. Responsive Viewports
+   ========================================================================== */
+@media screen and (max-width: 782px) {
+	.tcm-admin-wrap {
+		margin-right: 10px;
+	}
+
+	.tcm-card-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 12px;
+	}
+
+	.tcm-stats-grid {
+		grid-template-columns: 1fr;
+	}
+}
